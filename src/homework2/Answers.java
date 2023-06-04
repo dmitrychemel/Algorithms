@@ -26,7 +26,7 @@ public class Answers {
     - void method(int n) {
         for (int i = 0; i < n / 2; i++) { // O(n/2)
             for (int j = 1; j + n / 2 <= n; j++) { // O(n/2 - 1)
-                for (int k = 1; k <= n; k = k * 2) {  // O(n/2)
+                for (int k = 1; k <= n; k = k * 2) {  // O(log n)
                     System.out.println("I am expert!"); // итог: O(n^3)
                 }
             }
@@ -45,7 +45,7 @@ public class Answers {
                 a = a - b; //2
             } else {
                 b = b - a; //2
-            } // итог: O(6) - константа
+            } //
         }
     }
 
