@@ -14,6 +14,7 @@ public class UseArray {
         int[] array1 = {1, 6, 7, 8,11, 22, 66, 33 ,5};
         sortedInsertion(array);
         sortedSelection(array1);
+        Arrays.sort(array);
         System.out.println(Arrays.toString(array));
         System.out.println(Arrays.toString(array1));
     }
