@@ -5,43 +5,44 @@ import java.util.Arrays;
 public class QuickSort {
     public static void main(String[] args) {
         int[] array = new int[]{1, 5, 6, 9, 3, 2, 4, 5, 1, 6};
-        quickSort(array, 0, array.length);
+        quickSort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
 
     public static void quickSort(int[] array, int from, int to){
-        if (from < to){
-            int partitionIndex = partition(array, from, to);
-            quickSort(array, from, partitionIndex);
-            quickSort(array, partitionIndex + 1, to);
-        }
+       if(from < to){
+           int mediumIndex = partition(array, from, to);
+           quickSort(array, from,mediumIndex - 1);
+           quickSort(array, mediumIndex, to);
+       }
     }
 
     private static int partition(int[] array, int from, int to) {
-        int median = (to + from) /2 ;
-        int pivot = array[median];
-        int leftPointer = from;
-        int rightPointer = to;
-        while (leftPointer <= rightPointer){
-            while (array[leftPointer] < pivot) {
-                leftPointer++;
+        int rightIndex = to;
+        int leftIndex = from;
+
+        int pivot = array[(to + from)/2];
+        while(leftIndex <= rightIndex){
+            while (array[leftIndex] < pivot){
+                leftIndex++;
             }
-            while (array[rightPointer] > pivot) {
-                rightPointer--;
+
+            while (array[rightIndex] > pivot){
+                rightIndex--;
             }
-            if(leftPointer >= rightPointer) {
-                break;
+
+            if(leftIndex <= rightIndex){
+                swap(array, rightIndex, leftIndex);
+                leftIndex++;
+                rightIndex--;
             }
-            swap(array, leftPointer, rightPointer);
-            leftPointer++;
-            rightPointer--;
         }
-        return rightPointer;
+        return leftIndex;
     }
 
-    private static void swap(int[] array, int leftPointer, int rightPointer){
-        int tmp = array[leftPointer];
-        array[leftPointer] = array[rightPointer];
-        array[rightPointer] = tmp;
+    private static void swap(int[] array, int rightIndex, int leftIndex){
+        int tmp = array[rightIndex];
+        array[rightIndex] = array[leftIndex];
+        array[leftIndex] = tmp;
     }
 }
