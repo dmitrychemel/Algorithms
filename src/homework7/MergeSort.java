@@ -6,6 +6,7 @@ public class MergeSort {
     public static void main(String[] args) {
         int[] array = new int[]{7, 31, 24, 12, 66, 81, 23, 1, 3};
         System.out.println(Arrays.toString(mergeSort(array, 0, array.length - 1)));
+        int[] array1 = new int[1];
     }
 
     private static int[] mergeSort(int[] array, int from, int to) {
